@@ -2,18 +2,51 @@
   <button id="add-button" (click)="toggleAddNewNote()">Add Note</button>
 </div>
 
-@if (showNotes) {
+@if (showNotes=="ShowNote") {
  <div class="row">
   @for (note of notes; track $index) {
     <div class="note-wrapper">
       <app-notes [note]="note" class="note-card"></app-notes>
         <button (click)="deleteNote(note.id)" class="btn btn-danger mt-2">Delete Note</button>
+        <button (click)="toggleEditNote(note)" class="btn btn-success mt-2">Edit Note</button>
     </div>
+    
   }
 </div>
 
 }
-@else {
+
+@if (showNotes=="EditNote") {
+  <div class="new-note-form">
+    <h3 >Edit {{newTopic}}</h3>
+    <div class="form-group">
+      <label for="topic">Topic</label>
+      <input type="text" id="topic" [(ngModel)]="newTopic" class="form-control">
+    </div>
+
+    <div class="form-group">
+      <label for="description">Description</label>
+      <textarea id="description" [(ngModel)]="newDescription" class="form-control"></textarea>
+    </div>
+
+    <h4>Key Points</h4>
+    @for (points of newKeypoints; track $index) {
+      <div class="form-group">
+        <label for="keypoint{{$index}}">Point {{$index + 1}}</label>
+        <input type="text" id="keypoint{{$index}}" [(ngModel)]="newKeypoints[$index]" class="form-control">
+      </div>
+    }
+
+    <!-- <button (click)="addKeypoint()" class="btn btn-sm btn-outline-primary mb-2">+ Add Key Point</button> -->
+
+    <div class="form-actions mt-3">
+      <button (click)="saveEditNote(notes)" class="btn btn-primary">Save</button>
+      <button (click)="showNote()" class="btn btn-secondary">Cancel</button>
+    </div>
+  </div>
+}
+
+@if (showNotes=='AddNote') {
   <div class="new-note-form">
     <h3>Create a New Note</h3>
     <div class="form-group">
@@ -38,7 +71,7 @@
 
     <div class="form-actions mt-3">
       <button (click)="saveNewNote()" class="btn btn-primary">Save</button>
-      <button (click)="toggleAddNewNote()" class="btn btn-secondary">Cancel</button>
+      <button (click)="showNote()" class="btn btn-secondary">Cancel</button>
     </div>
   </div>
 }

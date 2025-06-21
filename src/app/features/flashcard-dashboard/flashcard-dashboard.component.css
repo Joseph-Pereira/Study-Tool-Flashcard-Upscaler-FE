@@ -1,4 +1,6 @@
 #add-button {
+  max-width: 800px;
+  margin: 0 auto;
   padding: 10px 20px;
   border: none;
   background-color: #47d770;
@@ -7,15 +9,59 @@
   cursor: pointer;
   align-self: center;
 }
-
-.edit{
-}
 .edit button{
   padding: 5px 10px;
   background-color: #007bff;
 }
+.new-flashcard-form {
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 1.5rem;
+  border-radius: 10px;
+}
 
-.buttons{
-  /* position: absolute; */
-  /* display: flex; */
+
+.form-control{
+   margin-top: 1%;
+   margin-bottom: 1%;
+}
+
+.form-actions {
+  display: flex;
+  justify-content: center; 
+  gap: 1rem;              
+  margin-top: 1.5rem;
+}
+
+.form-actions .btn {
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  border-radius: 0.5rem;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.form-actions .btn-primary {
+  background-color: #2563eb; 
+  color: white;
+}
+
+.form-actions .btn-primary:hover {
+  background-color: #163eab; 
+}
+
+.form-actions .btn-secondary {
+  background-color: #6b7280; 
+  color: white;
+}
+
+.form-actions .btn-secondary:hover {
+  background-color: #4b5563;
+}
+
+h4, h3{
+  font-weight: bold;
+  padding: 1%;
+  padding-left: 0%;
 }
