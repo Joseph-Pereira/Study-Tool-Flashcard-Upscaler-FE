@@ -25,6 +25,10 @@ export class NotesService {
         return this.http.post<NoteDto>(this.baseUrl+'Note', newNote);
     }
 
+    public putNote(id: Number ,updatedNote : NoteDto) : Observable<NoteDto> {
+        return this.http.put<NoteDto>(this.baseUrl+'Note' + '/' + id, updatedNote);
+    }
+
     public deleteNote(id : number) : Observable<NoteDto> {
         return this.http.delete<NoteDto>(this.baseUrl+'Note'+ '/' + id);
     }
