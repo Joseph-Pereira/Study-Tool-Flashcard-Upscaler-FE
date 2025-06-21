@@ -28,10 +28,11 @@ export class LoginComponent {
 
   loginSubmit() {
     let userCredentials: LoginCredentials = {
+      Id: 0, // Assuming Id is not needed for login
       username: this.username,
       password: this.password
     }
-
+  
     this.loginService.login(userCredentials).subscribe({
       next: (user: UserDto) => {
       
@@ -40,6 +41,7 @@ export class LoginComponent {
           console.log("Login successful");
           this.router.navigate(['home']);
         }
+
       }
     });
   }

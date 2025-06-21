@@ -18,6 +18,6 @@ export class LoginService {
   private baseUrl = 'http://localhost:5013/api/'
 
   public login(loginDetails: LoginCredentials): Observable<UserDto> {
-    return this.http.post<UserDto>(this.baseUrl + 'Login', loginDetails);
+    return this.http.post<UserDto>(this.baseUrl + 'Login/get-user', loginDetails);
   }
 }
