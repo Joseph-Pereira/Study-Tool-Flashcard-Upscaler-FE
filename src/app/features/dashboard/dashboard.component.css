@@ -1,20 +1,68 @@
 #dashboard-container {
- border: 1px solid #0dc18e;
- box-shadow: 0 0 0 0.7rem rgba(16, 194, 144, 0.45);
+  border: 1px solid #0dc18e;
+  box-shadow: 0 0 0 0.7rem rgba(16, 194, 144, 0.45);
 }
 
+/* Base button styling - inactive state */
+.btn {
+  border: 2px solid transparent;
+  transition: all 0.3s ease;
+  opacity: 0.6;
+  font-weight: 500;
+}
+
+/* Active state styling */
 .active {
   text-decoration: underline;
   text-underline-offset: 4px;
   font-weight: bold;
+  opacity: 1;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   /* filter: brightness(90%); 
   transition: filter 0.2s ease; */
     /* background-color: #e2c509;
      border-color: #e1c50e; */
-} 
+}
 
+/* Button color styling */
 .btn-warning,
 .btn-info {
- 
   color: #000000; /* ensure text is readable */
+}
+
+/* Specific styling for warning button (Flashcards) */
+.btn-warning {
+  background-color: #ffc107;
+}
+
+.btn-warning.active {
+  background-color: #ffca2c;
+  border-color: #ffc107;
+}
+
+/* Specific styling for info button (Notes) */
+.btn-info {
+  background-color: #17a2b8;
+}
+
+.btn-info.active {
+  background-color: #1ac6e0;
+  border-color: #17a2b8;
+}
+
+/* Hover effects for inactive buttons */
+.btn:not(.active):hover {
+  opacity: 0.8;
+  transform: translateY(-0.5px);
+}
+
+/* Optional: Remove default Bootstrap focus outline and add custom one */
+.btn:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.25);
+}
+
+.btn.active:focus {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2), 0 0 0 3px rgba(0, 123, 255, 0.25);
 }
