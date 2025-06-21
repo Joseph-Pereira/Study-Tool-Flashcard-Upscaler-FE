@@ -7,6 +7,7 @@ import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-flashcard-dashboard',
+  standalone: true,
   imports: [FlashcardComponent, CommonModule, FormsModule],
   templateUrl: './flashcard-dashboard.component.html',
   styleUrl: './flashcard-dashboard.component.css'
@@ -15,7 +16,7 @@ export class FlashcardDashboardComponent {
   
   public flashCards: FlashcardDto[] = [];
 
-  public showFlashCards: boolean = true;
+  public showFlashCards: string = "show";
 
   public currentScore: number = 0;
   public totalScore: number = 0;
@@ -45,7 +46,15 @@ export class FlashcardDashboardComponent {
   }
 
   public toggleAddNewFlashCard() : void {
-    this.showFlashCards = !this.showFlashCards;
+    this.showFlashCards = "addNew";
+    this.resetNewFlashcardForm();
+  }
+  public toggleEditFlashCard() : void {
+    this.showFlashCards = "edit";
+  }
+  public cancel() : void {
+    this.showFlashCards = "show";
+    this.loadFlashCards();
   }
 
   public saveNewFlashcard() : void {
@@ -59,7 +68,7 @@ export class FlashcardDashboardComponent {
       this.flashCardService.addFlashcard(newCard).subscribe({
         next: (responseData: FlashcardDto) => {
           this.loadFlashCards();
-          this.toggleAddNewFlashCard();
+          this.cancel();
           this.resetNewFlashcardForm();
           return responseData;
         },
@@ -77,5 +86,55 @@ export class FlashcardDashboardComponent {
     this.newAnswer = '';
     this.newOptions = ['', '', '', ''];
   }
+
+  public deleteFlashcard(id: number): void {
+    this.flashCardService.deleteFlashcard(id).subscribe({
+      next: () => { this.loadFlashCards(); },
+      error: (error: any) => {
+        console.error('Error deleting note:', error);
+      }
+    });
+  }
+
+  public editCard: FlashcardDto | null = null;
+
+  public editFlashcard(flashcard? : any){
+    this.toggleEditFlashCard();
+    this.editCard = {...flashcard};
+    this.newQuestion = flashcard.question
+    this.newAnswer = flashcard.answer
+    this.newOptions = [...flashcard.options]
+    // const editCard: FlashcardDto = {
+    //     question: flashcard.question,
+    //     answer: flashcard.answer,
+    //     options: flashcard.options,
+    //     id: flashcard.id
+    //   };
+  }
+
+  public updateFlashcard(): void {
+  if (this.newQuestion && this.newAnswer && this.newOptions.some(option => option !== '') && this.editCard) {
+    const updatedCard: FlashcardDto = {
+      id: this.editCard.id,
+      question: this.newQuestion,
+      answer: this.newAnswer,
+      options: this.newOptions.filter(option => option !== '')
+    };
+
+    this.flashCardService.updateFlashcard(updatedCard).subscribe({
+      next: (responseData: FlashcardDto) => {
+        this.loadFlashCards();
+        this.cancel();
+        this.resetNewFlashcardForm();
+      },
+      error: (error: any) => {
+        console.error('Error updating flashcard:', error);
+      }
+    });
+  } else {
+    alert('Please fill in the question, answer, and at least one option.');
+  }
+}
+
   
 }

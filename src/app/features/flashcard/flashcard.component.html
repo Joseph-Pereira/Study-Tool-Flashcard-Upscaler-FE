@@ -1,5 +1,13 @@
 <div class="flashcard-container" [class.flipped]="isFlipped">
   <div class="flashcard">
+    
+    <!-- Controls on Top-Left -->
+    <div class="flashcard-controls">
+      <button class="edit-btn" (click)="onEdit()">Edit</button>
+      <button class="delete-btn" (click)="onDelete()">Delete</button>
+    </div>
+
+    <!-- Front of Card -->
     <div class="front">
       <h4>{{ flashCard.question }}</h4>
       <div class="options">
@@ -12,10 +20,12 @@
       </div>
       <button (click)="submitAnswer()" [disabled]="!selectedOption">Check Answer</button>
     </div>
+
+    <!-- Back of Card -->
     <div class="back">
       <h4>The correct answer is:</h4>
       <p>{{ flashCard.answer }}</p>
-      <!-- <button (click)="flipBack()">Flip Back</button> -->
     </div>
+    
   </div>
-</div>  
+</div>
