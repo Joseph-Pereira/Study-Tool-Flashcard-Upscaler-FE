@@ -87,14 +87,14 @@ export class FlashcardDashboardComponent {
     this.newOptions = ['', '', '', ''];
   }
 
-  public deleteFlashcard(id: number): void {
-    this.flashCardService.deleteFlashcard(id).subscribe({
-      next: () => { this.loadFlashCards(); },
-      error: (error: any) => {
-        console.error('Error deleting note:', error);
-      }
-    });
-  }
+    public deleteFlashcard(id: number): void {
+      this.flashCardService.deleteFlashcard(id).subscribe({
+        next: () => { this.loadFlashCards(); },
+        error: (error: any) => {
+          console.error('Error deleting note:', error);
+        }
+      });
+    }
 
   public editCard: FlashcardDto | null = null;
 
