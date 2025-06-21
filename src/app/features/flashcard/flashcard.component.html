@@ -26,6 +26,10 @@
     <div class="back">
       <h4>The correct answer is:</h4>
       <p>{{ flashCard.answer }}</p>
+      <!-- add a button to flip[ back]-->
+       <button class="btn btn-secondary me-2" (click)="flipBack()">
+            <i class="fas fa-undo" aria-hidden="true"></i> Flip Back
+          </button>
     </div>
     
   </div>
