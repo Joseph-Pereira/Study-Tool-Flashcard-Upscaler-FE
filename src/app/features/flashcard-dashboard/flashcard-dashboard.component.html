@@ -3,9 +3,9 @@
 </div>
 
 @if (showFlashCards === "show") {
-  <div class="row">
+  <div class="flashcard-grid">
     @for (flashCard of flashCards; track $index) {
-      <app-flashcard [flashCard]="flashCard" (edit)="editFlashcard($event)" (delete)="deleteFlashcard($event)" class="col-3 mx-1"></app-flashcard>
+      <app-flashcard [flashCard]="flashCard" (edit)="editFlashcard($event)" (delete)="deleteFlashcard($event)" class="flashcard-wrapper"></app-flashcard>
       <div class="buttons"></div>
     }
   </div>
