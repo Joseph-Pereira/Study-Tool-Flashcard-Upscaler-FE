@@ -27,4 +27,8 @@ export class FlashcardService {
     public deleteFlashcard(id : number) : Observable<FlashcardDto> {
         return this.http.delete<FlashcardDto>(this.baseUrl+'Flashcard'+ '/' + id);
     }
+
+    public updateFlashcard(updatedFlashCard:FlashcardDto) : Observable<FlashcardDto> {
+        return this.http.put<FlashcardDto>(this.baseUrl+'Flashcard'+ '/' + updatedFlashCard.id, updatedFlashCard);
+    }
 }

@@ -1,16 +1,18 @@
- <div class="row mb-3">
-    <button id="add-button" (click)="toggleAddNewFlashCard()">Add Flashcard</button>
- </div>
+<div class="row mb-3">
+  <button id="add-button" (click)="toggleAddNewFlashCard()">Add Flashcard</button>
+</div>
 
-@if (showFlashCards) {   
-    <div class="row">
-        @for (flashCard of flashCards; track $index) {
-            <app-flashcard [flashCard]="flashCard" class="col-3 mx-1"></app-flashcard>
-        }
-    </div>
+@if (showFlashCards === "show") {
+  <div class="row">
+    @for (flashCard of flashCards; track $index) {
+      <app-flashcard [flashCard]="flashCard" (edit)="editFlashcard($event)" (delete)="deleteFlashcard($event)" class="col-3 mx-1"></app-flashcard>
+      <div class="buttons"></div>
+    }
+  </div>
 }
-@else {
-    <div class="new-flashcard-form">
+
+@else if (showFlashCards === "addNew") {
+  <div class="new-flashcard-form">
     <h3>Create a New Flashcard</h3>
     <div class="form-group">
       <label for="question">Question</label>
@@ -29,7 +31,32 @@
     }
     <div class="form-actions">
       <button (click)="saveNewFlashcard()" class="btn btn-primary">Save</button>
-      <button (click)="toggleAddNewFlashCard()" class="btn btn-secondary">Cancel</button>
+      <button (click)="cancel()" class="btn btn-secondary">Cancel</button>
+    </div>
+  </div>
+}
+
+@else if (showFlashCards === "edit") {
+  <div class="new-flashcard-form">
+    <h3>Edit Flashcard</h3>
+    <div class="form-group">
+      <label for="question">Question</label>
+      <input type="text" id="question" [(ngModel)]="newQuestion" class="form-control">
+    </div>
+    <div class="form-group">
+      <label for="answer">Answer</label>
+      <input type="text" id="answer" [(ngModel)]="newAnswer" class="form-control">
+    </div>
+    <h4>Options</h4>
+    @for (option of newOptions; track $index) {
+      <div class="form-group">
+        <label for="option{{$index}}">Option {{$index + 1}}</label>
+        <input type="text" id="option{{$index}}" [(ngModel)]="newOptions[$index]" class="form-control">
+      </div>
+    }
+    <div class="form-actions">
+      <button (click)="updateFlashcard()" class="btn btn-success">Update</button>
+      <button (click)="cancel()" class="btn btn-secondary">Cancel</button>
     </div>
   </div>
 }
