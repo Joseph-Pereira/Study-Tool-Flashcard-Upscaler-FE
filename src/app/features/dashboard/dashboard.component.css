@@ -2,3 +2,11 @@
  border: 1px solid #0dc18e;
  box-shadow: 0 0 0 0.7rem rgba(16, 194, 144, 0.45);
 }
+
+.active {
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  font-weight: bold;
+  filter: brightness(90%); 
+  transition: filter 0.2s ease;
+} 
