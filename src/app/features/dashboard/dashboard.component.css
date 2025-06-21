@@ -7,6 +7,14 @@
   text-decoration: underline;
   text-underline-offset: 4px;
   font-weight: bold;
-  filter: brightness(90%); 
-  transition: filter 0.2s ease;
+  /* filter: brightness(90%); 
+  transition: filter 0.2s ease; */
+    /* background-color: #e2c509;
+     border-color: #e1c50e; */
 } 
+
+.btn-warning,
+.btn-info {
+ 
+  color: #000000; /* ensure text is readable */
+}
