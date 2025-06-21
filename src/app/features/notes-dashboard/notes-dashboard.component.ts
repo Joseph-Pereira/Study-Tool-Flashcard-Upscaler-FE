@@ -84,7 +84,7 @@ export class NotesDashboardComponent {
       this.noteService.addNote(newNote).subscribe({
         next: (responseData: NoteDto) => {
           this.loadNotes();
-          this.toggleAddNewNote();
+          this.showNote();
           this.resetNewNoteForm();
         },
         error: (error: any) => {
