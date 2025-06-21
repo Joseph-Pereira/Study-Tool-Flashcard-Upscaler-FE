@@ -9,7 +9,9 @@
       <div class="buttons"></div>
     }
   </div>
+  
 }
+
 
 @else if (showFlashCards === "addNew") {
   <div class="new-flashcard-form">
@@ -22,13 +24,20 @@
       <label for="answer">Answer</label>
       <input type="text" id="answer" [(ngModel)]="newAnswer" class="form-control">
     </div>
+    
     <h4>Options</h4>
     @for (option of newOptions; track $index) {
-      <div class="form-group">
-        <label for="option{{$index}}">Option {{$index + 1}}</label>
-        <input type="text" id="option{{$index}}" [(ngModel)]="newOptions[$index]" class="form-control">
+      <div class="form-group d-flex align-items-center gap-2">
+
+        <div class="flex-grow-1">
+          <label for="option{{$index}}">Option {{$index + 1}}</label>
+          <input type="text" id="option{{$index}}" [(ngModel)]="newOptions[$index]" class="form-control">
+        </div>
+        <button type="button" class="btn btn-sm btn-danger mt-4" (click)="removeKeypoint($index)">Remove</button>
       </div>
     }
+      
+    <button (click)="addOption()" class="btn btn-sm btn-outline-primary mb-2 mt-5">+ Add Option</button>
     <div class="form-actions">
       <button (click)="saveNewFlashcard()" class="btn btn-primary">Save</button>
       <button (click)="cancel()" class="btn btn-secondary">Cancel</button>
@@ -49,11 +58,17 @@
     </div>
     <h4>Options</h4>
     @for (option of newOptions; track $index) {
-      <div class="form-group">
-        <label for="option{{$index}}">Option {{$index + 1}}</label>
-        <input type="text" id="option{{$index}}" [(ngModel)]="newOptions[$index]" class="form-control">
+      <div class="form-group d-flex align-items-center gap-2">
+
+        <div class="flex-grow-1">
+          <label for="option{{$index}}">Option {{$index + 1}}</label>
+          <input type="text" id="option{{$index}}" [(ngModel)]="newOptions[$index]" class="form-control">
+        </div>
+        <button type="button" class="btn btn-sm btn-danger mt-4" (click)="removeKeypoint($index)">Remove</button>
       </div>
     }
+      
+    <button (click)="addOption()" class="btn btn-sm btn-outline-primary mb-2 mt-5">+ Add Option</button>
     <div class="form-actions">
       <button (click)="updateFlashcard()" class="btn btn-success">Update</button>
       <button (click)="cancel()" class="btn btn-secondary">Cancel</button>
