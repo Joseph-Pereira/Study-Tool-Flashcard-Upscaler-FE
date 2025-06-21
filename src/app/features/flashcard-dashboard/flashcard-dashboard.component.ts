@@ -136,5 +136,19 @@ export class FlashcardDashboardComponent {
   }
 }
 
+public addOption(): void {
+  if (this.newOptions) {
+    this.newOptions.push('');
+  } else {
+    this.newOptions = [''];
+  }
+}
+
+public removeKeypoint(index: number): void {
+  if (this.newOptions && index >= 0 && index < this.newOptions.length) {
+    this.newOptions.splice(index, 1);
+  }
+}
+
   
 }
