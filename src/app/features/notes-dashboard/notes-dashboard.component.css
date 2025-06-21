@@ -41,3 +41,7 @@ app-notes {
   cursor: pointer;
   align-self: center;
 }
+
+#editbutton {
+  margin-left: 15px;
+}
