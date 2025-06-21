@@ -32,8 +32,8 @@ export class FlashcardComponent {
   }
 
 
-  // flipBack() {
-  //   this.isFlipped = false;
-  //   this.selectedOption = null;
-  // }
+  flipBack() {
+    this.isFlipped = false;
+    this.selectedOption = null;
+  }
 }
