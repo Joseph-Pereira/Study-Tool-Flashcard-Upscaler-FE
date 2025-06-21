@@ -33,23 +33,25 @@ export class LoginComponent {
     }
 
     this.loginService.login(userCredentials).subscribe({
-      next: (users: UserDto[]) => {
-        this.users = users;
-        console.log(this.users);
+      next: (user: UserDto) => {
+      
         
-        this.validateUser();
+        if(user.username === this.username && user.password === this.password) {
+          console.log("Login successful");
+          this.router.navigate(['home']);
+        }
       }
     });
   }
 
-  private validateUser(): void {
-    let foundUser = this.findUser();
-    if (foundUser)
-      this.router.navigate(['home']);
-    else 
-      console.error("User not found");
+  // private validateUser(): void {
+  //   let foundUser = this.findUser();
+  //   if (foundUser)
+  //     this.router.navigate(['home']);
+  //   else 
+  //     console.error("User not found");
 
-  }
+  // }
 
   private findUser(): boolean {
     let foundUser: boolean = false;
