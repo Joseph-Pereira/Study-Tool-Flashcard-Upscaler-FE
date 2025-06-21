@@ -57,13 +57,14 @@ button {
 }
 
 button:disabled {
-  background-color: #ccc;
+  background-color: #a2a2a2;
   cursor: not-allowed;
 }
 
 .flashcard {
   border-radius: 10px;
-  background-color: #42474e;
+  background-color: #040e25;
+  color: white;
 }
 
 button:enabled {
