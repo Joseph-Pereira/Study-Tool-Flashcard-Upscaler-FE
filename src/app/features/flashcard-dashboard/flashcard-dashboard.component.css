@@ -7,3 +7,15 @@
   cursor: pointer;
   align-self: center;
 }
+
+.edit{
+}
+.edit button{
+  padding: 5px 10px;
+  background-color: #007bff;
+}
+
+.buttons{
+  /* position: absolute; */
+  /* display: flex; */
+}
