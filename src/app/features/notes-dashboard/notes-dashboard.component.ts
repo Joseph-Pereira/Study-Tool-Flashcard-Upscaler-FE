@@ -44,6 +44,7 @@ export class NotesDashboardComponent {
 
   public showNote(): void {
     this.showNotes = "ShowNote";
+    this.loadNotes();
   }
 
   public saveEditNote(note?: any): void {
