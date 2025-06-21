@@ -8,7 +8,7 @@
     <div class="note-wrapper">
       <app-notes [note]="note" class="note-card"></app-notes>
         <button (click)="deleteNote(note.id)" class="btn btn-danger mt-2">Delete Note</button>
-        <button (click)="toggleEditNote(note)" class="btn btn-success mt-2">Edit Note</button>
+        <button (click)="toggleEditNote(note)" class="btn btn-success mt-2" id="editbutton">Edit Note</button>
     </div>
     
   }
