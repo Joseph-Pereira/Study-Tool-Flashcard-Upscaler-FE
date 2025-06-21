@@ -2,10 +2,7 @@
   <div class="flashcard">
     
     <!-- Controls on Top-Left -->
-    <div class="flashcard-controls">
-      <button class="edit-btn" (click)="onEdit()">Edit</button>
-      <button class="delete-btn" (click)="onDelete()">Delete</button>
-    </div>
+    
 
     <!-- Front of Card -->
     <div class="front">
@@ -19,6 +16,10 @@
         }
       </div>
       <button (click)="submitAnswer()" [disabled]="!selectedOption">Check Answer</button>
+      <div class="flashcard-controls">
+      <button class="edit-btn" (click)="onEdit()">Edit</button>
+      <button class="delete-btn" (click)="onDelete()">Delete</button>
+    </div>
     </div>
 
     <!-- Back of Card -->

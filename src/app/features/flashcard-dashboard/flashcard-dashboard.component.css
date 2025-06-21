@@ -65,3 +65,16 @@ h4, h3{
   padding: 1%;
   padding-left: 0%;
 }
+
+.flashcard-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  padding: 10px;
+  justify-content: center; /* or center */
+}
+
+.flashcard-wrapper {
+  flex: 0 0 300px; /* width of each card */
+  height: auto;
+}
