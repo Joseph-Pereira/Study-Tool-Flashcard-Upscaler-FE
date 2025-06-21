@@ -7,8 +7,17 @@
     </div>
     <div class="row justify-content-center mb-4">
       <div class="col-md-6 d-flex gap-3 justify-content-center">
-        <button class="btn btn-warning w-50" (click)="showFlashCardsDashboard()">Flashcards</button>
-        <button class="btn btn-info w-50" (click)="showNotesDashboard()">Notes</button>
+        <!-- <button class="btn btn-warning w-50" (click)="showFlashCardsDashboard()">Flashcards</button>
+        <button class="btn btn-info w-50" (click)="showNotesDashboard()">Notes</button> -->
+        <button class="btn btn-warning w-50" [class.active]="showFlashCards" (click)="showFlashCardsDashboard()">
+          Flashcards
+        </button>
+
+        <button class="btn btn-info w-50" [class.active]="!showFlashCards" (click)="showNotesDashboard()">
+          Notes
+        </button>
+
+
       </div>
     </div>
     <div class="row">
