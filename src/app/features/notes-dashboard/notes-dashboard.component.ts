@@ -72,6 +72,22 @@ export class NotesDashboardComponent {
     }
   }
 
+
+public addKeypoint(): void {
+  if (this.newKeypoints) {
+    this.newKeypoints.push('');
+  } else {
+    this.newKeypoints = [''];
+  }
+}
+
+public removeKeypoint(index: number): void {
+  if (this.newKeypoints && index >= 0 && index < this.newKeypoints.length) {
+    this.newKeypoints.splice(index, 1);
+  }
+}
+
+
   public saveNewNote(): void {
     if (this.newTopic && this.newDescription && this.newKeypoints.some(k => k.trim() !== '')) {
       const newNote: NoteDto = {

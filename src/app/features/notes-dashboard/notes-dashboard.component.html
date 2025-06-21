@@ -59,15 +59,27 @@
       <textarea id="description" [(ngModel)]="newDescription" class="form-control"></textarea>
     </div>
 
-    <h4>Key Points</h4>
+    <!-- <h4>Key Points</h4>
     @for (points of newKeypoints; track $index) {
       <div class="form-group">
         <label for="keypoint{{$index}}">Point {{$index + 1}}</label>
         <input type="text" id="keypoint{{$index}}" [(ngModel)]="newKeypoints[$index]" class="form-control">
       </div>
+    } -->
+    <h4>Key Points</h4>
+    @for (points of newKeypoints; track $index) {
+      <div class="form-group d-flex align-items-center gap-2">
+        <div class="flex-grow-1">
+          <label for="keypoint{{$index}}">Point {{$index + 1}}</label>
+          <input type="text" id="keypoint{{$index}}" [(ngModel)]="newKeypoints[$index]" class="form-control">
+        </div>
+        <button type="button" class="btn btn-sm btn-danger mt-4" (click)="removeKeypoint($index)">Remove</button>
+      </div>
     }
 
-    <!-- <button (click)="addKeypoint()" class="btn btn-sm btn-outline-primary mb-2">+ Add Key Point</button> -->
+
+    <button (click)="addKeypoint()" class="btn btn-sm btn-outline-primary mb-2">+ Add Key Point</button>
+    
 
     <div class="form-actions mt-3">
       <button (click)="saveNewNote()" class="btn btn-primary">Save</button>
